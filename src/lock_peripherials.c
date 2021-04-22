@@ -32,7 +32,7 @@ static keypad_t matrixPad;
 
 /*==================[declaraciones de funciones internas]====================*/
 
-bool_t keypadToDigit(uint16_t key, char * tempDigit);
+bool_t keypadToDigit(uint16_t key, char * tempDigit); 
 
 bool_t turnOnLed(gpioMap_t led);
 bool_t turnOffLed(gpioMap_t led);
@@ -43,13 +43,14 @@ bool_t turnOffBuzzer(gpioMap_t buzzer);
 
 /*==================[definiciones de funciones internas]=====================*/
 
-/********************************************************
- /**************keypadToNumber****************************
- /********************************************************
- * Funcion que convierte el numero de tecla presionado a
+/**
+ * @brief Funcion que convierte el numero de tecla presionado a
  * su valor correspondiente en ASCII.
- ********************************************************/
-
+ * 
+ * @param key Numero de tecla presionado.
+ * @param tempDigit Variable donde se almacena en caracter correspondiente a la tecla presionada.
+ * @return bool_t TRUE si logro hacerse la conversion sin problemas. FALSE si la tecla presionada no es compatible con las teclas del teclado.
+ */
 bool_t keypadToDigit(uint16_t key, char * tempDigit) {
 	static const char keypad[] = { '1', '2', '3', '\0', '4', '5', '6', '\0',
 			'7', '8', '9', '\0', '\0', '0', '\0', '\0' }; //Valores de los botones del teclado.
@@ -61,10 +62,22 @@ bool_t keypadToDigit(uint16_t key, char * tempDigit) {
 		return FALSE;
 }
 
+/**
+ * @brief 
+ * 
+ * @param led 
+ * @return bool_t 
+ */
 bool_t turnOnLed(gpioMap_t led) {
 	return gpioWrite(led, ON);
 }
 
+/**
+ * @brief 
+ * 
+ * @param led 
+ * @return bool_t 
+ */
 bool_t turnOffLed(gpioMap_t led) {
 	return gpioWrite(led, OFF);
 }
